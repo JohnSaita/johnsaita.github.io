@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>John S Nkaiwatei · Selected Work</title>
+<meta name="description" content="Selected Web GIS and spatial analysis projects by John S Nkaiwatei, Geo Intelligence Lab.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#04384a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2304384a'/%3E%3Cpath d='M16 6a5 5 0 0 0-5 5c0 3.6 5 8 5 8s5-4.4 5-8a5 5 0 0 0-5-5Z' fill='%23fff'/%3E%3Cpath d='M7 20l9 5 9-5' fill='none' stroke='%2300a0d6' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --navy: #04384a;
+    --navy-2: #0a4a60;
+    --teal: #0077a0;
+    --teal-bright: #009fd5;
+    --teal-soft: #effaff;
+    --text: #0f1b21;
+    --text-2: #495057;
+    --border: #dee2e6;
+    --surface: #ffffff;
+    --surface-2: #f6f8f9;
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 6px 20px rgba(4,56,74,.08);
+    --wrap: 1080px;
+    color-scheme: light;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--surface);
+    color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: var(--teal); }
+  h1, h2, h3 { line-height: 1.2; margin: 0; }
+  p { margin: 0; }
+  .wrap { width: min(var(--wrap), 100% - 32px); margin-inline: auto; }
+  section { padding: 72px 0; }
+  section:nth-of-type(even) { background: var(--surface-2); }
+  .eyebrow {
+    color: var(--teal);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .section-title { font-size: clamp(26px, 4vw, 34px); margin: 6px 0 12px; }
+  .section-lead { color: var(--text-2); max-width: 640px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 46px; padding: 0 22px;
+    border: 1px solid transparent; border-radius: 6px;
+    font-weight: 600; font-size: 16px; text-decoration: none;
+    transition: background-color .2s, color .2s, border-color .2s, transform .2s;
+  }
+  .btn:focus-visible, a:focus-visible { outline: 3px solid #7fcfea; outline-offset: 2px; }
+  .btn-primary { background: var(--teal-bright); color: #fff; }
+  .btn-primary:hover { background: var(--teal); transform: translateY(-1px); }
+  .btn-outline { border-color: rgba(255,255,255,.7); color: #fff; }
+  .btn-outline:hover { background: rgba(255,255,255,.12); }
+  .btn-dark { background: var(--navy); color: #fff; }
+  .btn-dark:hover { background: var(--navy-2); }
+
+  /* Nav */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(4,56,74,.97);
+    color: #fff;
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-weight: 700; }
+  .brand small { display: block; font-weight: 500; font-size: 12px; opacity: .75; }
+  .nav-links { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { color: rgba(255,255,255,.85); text-decoration: none; font-size: 15px; font-weight: 500; }
+  .nav-links a:hover { color: #fff; }
+
+  /* Hero */
+  .hero {
+    background:
+      radial-gradient(circle at 85% 20%, rgba(0,159,213,.28), transparent 45%),
+      linear-gradient(160deg, var(--navy) 0%, #062c3a 100%);
+    color: #fff;
+    padding: 96px 0 88px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::after {
+    /* Faint contour lines, drawn in CSS so nothing extra is downloaded. */
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .12;
+    background: repeating-radial-gradient(circle at 80% 30%, transparent 0 22px, #7fcfea 23px 24px);
+    -webkit-mask-image: linear-gradient(90deg, transparent 30%, #000 80%);
+            mask-image: linear-gradient(90deg, transparent 30%, #000 80%);
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero .eyebrow { color: #7fcfea; }
+  .hero h1 { font-size: clamp(36px, 7vw, 60px); margin: 10px 0 6px; letter-spacing: -.02em; }
+  .hero .role { font-size: clamp(18px, 2.6vw, 22px); color: rgba(255,255,255,.85); font-weight: 500; }
+  .hero .value { margin: 22px 0 32px; max-width: 620px; font-size: clamp(17px, 2.2vw, 20px); color: rgba(255,255,255,.9); }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  /* Featured project */
+  .project {
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center;
+    margin-top: 36px;
+  }
+  .shot {
+    width: 100%; height: auto;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: var(--shadow); background: #fff;
+  }
+  .project h3 { font-size: 26px; margin-bottom: 12px; }
+  .project p { color: var(--text-2); }
+  .points { margin: 18px 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .points li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; color: var(--text-2); }
+  .points li::before {
+    content: ""; width: 18px; height: 18px; margin-top: 4px; border-radius: 50%;
+    background: var(--teal-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='m5 9.5 2.5 2.5L13 6.5' fill='none' stroke='%230077a0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat;
+  }
+  .points strong { color: var(--text); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0 0 18px; padding: 0; }
+  .chips li {
+    padding: 4px 12px; border: 1px solid var(--teal-bright); border-radius: 4px;
+    background: var(--teal-soft); color: var(--teal); font-size: 14px; font-weight: 600;
+  }
+  .note {
+    margin: 0 0 22px; padding: 10px 14px; border-left: 3px solid #d67d00;
+    background: #fff8ec; border-radius: 4px; color: #6b3f00; font-size: 14px;
+  }
+
+  /* Placeholder project */
+  .placeholder {
+    margin-top: 36px; padding: 32px;
+    border: 2px dashed #b9c4ca; border-radius: var(--radius);
+    display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center;
+    background: var(--surface);
+  }
+  .placeholder .icon {
+    width: 72px; height: 72px; border-radius: 12px; display: grid; place-items: center;
+    background: var(--teal-soft); color: var(--teal);
+  }
+  .tag {
+    display: inline-block; margin-bottom: 8px; padding: 2px 10px; border-radius: 4px;
+    background: #fff3d6; color: #6b3f00; font-size: 13px; font-weight: 700;
+  }
+  .placeholder h3 { font-size: 22px; margin-bottom: 6px; }
+  .placeholder p { color: var(--text-2); }
+
+  /* Services */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+  .card {
+    display: flex; flex-direction: column;
+    padding: 28px; border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface); box-shadow: var(--shadow);
+  }
+  .card.featured { border-top: 4px solid var(--teal-bright); }
+  .card h3 { font-size: 20px; }
+  .price { margin: 12px 0 16px; font-size: 26px; font-weight: 800; color: var(--navy); }
+  .price small { display: block; font-size: 13px; font-weight: 600; color: var(--text-2); letter-spacing: .02em; }
+  .card ul { margin: 0 0 24px; padding-left: 20px; color: var(--text-2); display: grid; gap: 6px; }
+  .card .btn { margin-top: auto; }
+
+  /* Proof */
+  .proof { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 20px; margin-top: 36px; align-items: stretch; }
+  .stat {
+    padding: 28px; border-radius: var(--radius); background: var(--navy); color: #fff;
+  }
+  .stat strong { display: block; font-size: 48px; line-height: 1; font-weight: 800; color: #7fcfea; }
+  .stat span { display: block; margin-top: 10px; color: rgba(255,255,255,.85); }
+  .proof-cta {
+    padding: 28px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface);
+    display: flex; flex-direction: column; justify-content: center; gap: 16px;
+  }
+  .proof-cta p { color: var(--text-2); }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; }
+  .contact {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px; border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface); color: var(--text); text-decoration: none;
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+  }
+  .contact:hover { border-color: var(--teal-bright); box-shadow: var(--shadow); transform: translateY(-2px); }
+  .contact svg { flex: none; width: 40px; height: 40px; padding: 9px; border-radius: 8px; background: var(--teal-soft); color: var(--teal); }
+  .contact b { display: block; font-size: 15px; }
+  .contact span { display: block; color: var(--text-2); font-size: 14px; overflow-wrap: anywhere; }
+
+  footer { background: var(--navy); color: rgba(255,255,255,.75); padding: 28px 0; font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+  footer a { color: #fff; }
+
+  @media (max-width: 900px) {
+    .project { grid-template-columns: 1fr; gap: 28px; }
+    .cards { grid-template-columns: 1fr; }
+    .proof { grid-template-columns: 1fr 1fr; }
+    .proof-cta { grid-column: 1 / -1; }
+    .contact-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 56px 0; }
+    .nav-links { display: none; }
+    .hero { padding: 64px 0 60px; }
+    .hero-actions .btn { flex: 1 1 100%; }
+    .placeholder { grid-template-columns: 1fr; padding: 24px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .stat { padding: 22px; }
+    .stat strong { font-size: 40px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <span class="brand">
+      <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0a4a60"/><path d="M16 6a5 5 0 0 0-5 5c0 3.6 5 8 5 8s5-4.4 5-8a5 5 0 0 0-5-5Z" fill="#fff"/><path d="M7 20l9 5 9-5" fill="none" stroke="#00a0d6" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span>Geo Intelligence Lab<small>John S Nkaiwatei</small></span>
+    </span>
+  </div>
+</nav>
+
+<main>
+  <section id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <p class="eyebrow">Featured project</p>
+      <h2 class="section-title" id="work-title">Transmission Risk Map</h2>
+      <p class="section-lead">A global web map of transmission risk for seven mosquito-borne diseases, from whole countries down to individual districts.</p>
+
+      <div class="project">
+        <iframe class="shot" style="aspect-ratio: 16 / 9; border-style: solid;" src="https://www.youtube-nocookie.com/embed/NN6jgD0fOLk?rel=0"
+          title="Transmission Risk Map: video demo" loading="lazy"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        <div>
+          <h3>Country → state → district, automatically</h3>
+          <p>Zoom in and the map switches admin level on its own, showing exactly one level at a time so it stays readable and fast.</p>
+          <ul class="points">
+            <li><span><strong>Three zoom levels.</strong> Countries when zoomed out, states in the middle, districts up close. Districts load per country only when needed.</span></li>
+            <li><span><strong>Parent-region fallback.</strong> A district without data takes its state's value; a state without data takes its country's. Inherited values are hatched so they're never mistaken for real ones.</span></li>
+            <li><span><strong>Built for phones.</strong> Country search, "my location" with the local risk level, and terrain layers, all usable on a 400px screen.</span></li>
+          </ul>
+          <ul class="chips" aria-label="Tech stack">
+            <li>React</li><li>TypeScript</li><li>Mapbox GL JS</li><li>geoBoundaries</li>
+          </ul>
+          <p class="note">All risk values in this demo are synthetic, generated for demonstration. They are not real risk estimates.</p>
+          <a class="btn btn-dark" href="/risk-map/">Open the live map
+            <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4h9v9M16 4 5 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <article class="project" style="margin-top: 56px;" aria-labelledby="case2-title">
+        <img class="shot" src="../kent-benzene/overview.png" width="1600" height="900" loading="lazy"
+          alt="Map of modelled 2023 background benzene across Kent and Medway on a 1 km grid, highest along the Thames side around Dartford, Gravesham and Medway, with 88 emission sources and the M2, M20 and M25 motorways">
+
+        <div>
+          <p class="eyebrow">Case study</p>
+          <h3 id="case2-title">Benzene exposure in Kent and Medway, 2023</h3>
+          <p>Which parts of Kent and Medway carry the most background benzene, and how many residents live there? Modelled concentrations, Census 2021 population and emission sources, combined in a rerunnable pipeline.</p>
+          <ul class="points">
+            <li><span><strong>Well below the limit.</strong> The highest 1 km cell reaches 0.63 µg/m³, about one-eighth of the UK annual objective of 5 µg/m³.</span></li>
+            <li><span><strong>The Thames side carries the burden.</strong> 337,566 residents (18.2%) live at or above 0.50 µg/m³, and 92% of them are in Medway, Dartford and Gravesham.</span></li>
+            <li><span><strong>Big emitters don't set the pattern.</strong> 88 sites released 12.3 tonnes in 2023, yet emission size and local concentration are almost unrelated (Spearman ρ = 0.11).</span></li>
+          </ul>
+          <ul class="chips" aria-label="Tools and data">
+            <li>QGIS</li><li>Python</li><li>Defra PCM</li><li>Census 2021</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> John S Nkaiwatei · Geo Intelligence Lab</span>
+    <a href="/risk-map/">Transmission Risk Map demo</a>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
